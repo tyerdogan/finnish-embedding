@@ -1,0 +1,29 @@
+# Large data files — never commit
+data/raw/
+data/processed/
+data/tokenizer/
+
+# Model checkpoints
+checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# PyTorch files
+*.pt
+*.pth
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
