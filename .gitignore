@@ -6,6 +6,9 @@ data/tokenizer/
 # Model checkpoints
 checkpoints/
 
+# Outpouts
+outputs/
+
 # Python
 __pycache__/
 *.pyc
