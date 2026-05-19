@@ -1,4 +1,4 @@
-# Finnish BERT — From Scratch
+# Finnish BERT — From Scratch (In Progress)
 
 Finnish sentence embedding model, from scratch, without HuggingFace.
 
