@@ -1,4 +1,4 @@
-# Embeddings from Scratch
+# From-Scratch Finnish BERT Encoder for Sentence Embeddings
 
 > **A complete NLP pipeline built without any pre-trained models or high-level ML libraries.**  
 > From raw text acquisition to trained sentence embeddings — every component written from the ground up in pure Python and PyTorch.
