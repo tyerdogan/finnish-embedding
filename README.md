@@ -11,7 +11,7 @@ This project was conceived as a deliberate engineering constraint: *"Can you bui
 
 No HuggingFace. No sentencepiece. No pre-trained weights. No Trainer APIs.
 
-Finnish was chosen intentionally. It is one of the most morphologically complex languages in computational linguistics — agglutinative, with 15 grammatical cases and compound words that encode entire English phrases in a single token (e.g., *taloissammekin* = "not even in our houses"). This forces every layer of the pipeline — tokenization, masking, model architecture — to make language-aware decisions that a generic English pipeline would not.
+Finnish was chosen intentionally. It is one of the most morphologically complex languages in computational linguistics — agglutinative, with 15 grammatical cases and compound words that encode entire English phrases in a single token (e.g., *taloissammekin* = "in our houses too"). This forces every layer of the pipeline — tokenization, masking, model architecture — to make language-aware decisions that a generic English pipeline would not.
 
 ---
 
