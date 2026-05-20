@@ -220,6 +220,14 @@ python src/03_tokenizer.py
 # Step 4 — Pre-tokenise the corpus and save as a LongTensor (~2 minutes)
 python src/04_dataset.py --build-only
 # Output: data/processed/dataset.pt  (~3.8 GB)
+
+# Step 5 — Verify model architecture before training (~5 seconds)
+python src/05_model.py
+# Instantiates BertForMLM, runs a forward pass with dummy data, and confirms:
+#   · Parameter count : ~17.6M
+#   · Initial loss    : ~10.82  (expected ln(50,000) for a random-init model)
+#   · Sentence embeddings shape and unit L2 norm
+# If this step passes cleanly the architecture is ready for training.
 ```
 
 ### 3. Train on Google Colab (GPU Required)
