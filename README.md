@@ -344,6 +344,49 @@ finnish-embeddings/
 
 ---
 
+## Future Development
+
+The current pipeline establishes a solid foundation — a fully from-scratch BERT encoder trained on Finnish text with proper MLM, WWM, and production-grade training infrastructure. The natural next steps build directly on this base.
+
+### 1. SimCSE Contrastive Fine-tuning
+
+The single highest-leverage improvement. SimCSE (Gao et al. 2021, arXiv:2104.08821) fine-tunes the encoder with a contrastive objective: each sentence is passed through the model twice with different dropout masks, creating two minimally different views. The NT-Xent loss maximises agreement between these views while using in-batch negatives to push dissimilar sentences apart.
+
+This directly addresses the two weaknesses measured in this project:
+- **Anisotropy** drops significantly — the negative-pair term forces vectors to spread across the hypersphere.
+- **Uniformity** improves as a side effect of the same spreading pressure.
+
+No labelled data required. The pre-trained checkpoint here is the starting point; SimCSE fine-tuning typically converges in a few thousand steps.
+
+### 2. Corpus Expansion
+
+The current corpus is Project Gutenberg Finnish literature — predominantly 19th–early 20th century texts. Two additions would substantially improve representation quality:
+
+- **Finnish Wikipedia** — modern language, encyclopaedic breadth, sentence-level structure well-suited to BERT pre-training.
+- **Finnish news archives** — contemporary vocabulary, named entities, current Finnish orthography.
+
+Both are freely available. Combining them with the Gutenberg corpus would bring the token count closer to the ~3B tokens used by FinBERT (Virtanen et al. 2019), the current Finnish-language baseline.
+
+### 3. BERT Phase 2 — Longer Sequences
+
+Following the original BERT training schedule, Phase 1 uses `max_seq_length=128` (done). Phase 2 extends to `max_seq_length=512` for the final 10% of training steps. The O(T²) attention cost makes 512-token sequences ~16× more expensive per sample, but the longer context improves the model's ability to capture document-level dependencies — particularly relevant for Finnish, where long compound words and case suffixes encode relationships that span clause boundaries.
+
+The `BertConfig` and training loop in this codebase already support this change with a single hyperparameter edit.
+
+### 4. Downstream Task Evaluation
+
+The current evaluation is geometric (anisotropy, uniformity, nearest-neighbour retrieval). Production-readiness requires task-based evaluation:
+
+- **Finnish STS** — semantic textual similarity benchmark to measure cosine similarity as a direct ranking signal.
+- **Named Entity Recognition** — attach a linear classification head to the encoder and fine-tune on a Finnish NER dataset (e.g. Turku NER corpus) to measure transfer quality.
+- **Text classification** — sentiment or topic classification to validate that the encoder's representations are linearly separable for downstream tasks.
+
+### 5. Tokenizer Upgrade
+
+The current BPE tokenizer is character-level (splits words into characters first, then merges). A **WordPiece** or **Unigram** tokenizer (as used by FinBERT and XLM-RoBERTa) would produce a vocabulary with better morpheme-level coverage for Finnish — particularly for rare inflected forms not seen during BPE training. Both algorithms are implementable within the same from-scratch constraint as the current codebase.
+
+---
+
 ## References
 
 | Paper | Used for |
