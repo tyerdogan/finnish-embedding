@@ -192,7 +192,7 @@ Ethayarajh (2019) showed that MLM pre-training systematically increases anisotro
 ### 1. Install Dependencies
 
 ```bash
-git clone https://github.com/tyerdogan/finnish-embeddings.git
+git clone https://github.com/tyerdogan/finnish-embedding.git
 cd finnish-embeddings
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
