@@ -9,6 +9,7 @@ Implements four complementary metrics from the sentence embedding literature:
 """
 
 import math
+import sys
 import random
 import importlib.util
 import collections
@@ -520,7 +521,7 @@ def main() -> dict:
         },
       }
     """
-    import sys
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}\n", flush=True)
 

@@ -1,4 +1,5 @@
 import random
+import sys
 import importlib.util
 import torch
 from pathlib import Path
@@ -704,7 +705,7 @@ def main():
     preprocess_and_save(CORPUS_PATH, vocab, merges, output_path, max_samples=2_000_000)
 
 
-import sys
+
 if __name__ == "__main__":
     if "--build-only" in sys.argv:
         # Colab: build dataset.pt only, skip smoke test
