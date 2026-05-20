@@ -55,7 +55,7 @@ The model follows the **6L/256H/4A** small BERT configuration from Turc et al. (
 
 ---
 
-## Pipeline Deep Dive
+## Pipeline
 
 ### Stage 1 — Data Acquisition (`01_data_download.py`)
 
