@@ -7,7 +7,7 @@
 
 ## The Challenge
 
-This project was conceived as a deliberate engineering constraint: *"Can you build a working sentence embedding model for a morphologically complex language — using only the Python standard library and PyTorch?"*
+This project was conceived as a deliberate engineering constraint: *"Can you build a working embedding model for a morphologically complex language — using only the Python standard library and PyTorch?"*
 
 No HuggingFace. No sentencepiece. No pre-trained weights. No Trainer APIs.
 
